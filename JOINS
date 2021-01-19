@@ -1,0 +1,94 @@
+/*JOINS*/
+drop table if exists training.emp;
+create table training.emp
+(
+id int primary key,
+name varchar(20)
+);
+insert into training.emp
+(id, name) values
+(1,'jim'),
+(2,'kim'),
+(3,'lim');
+
+drop table if exists training.fin;
+create table training.fin
+(
+id int primary key,
+sal int
+);
+insert into training.fin
+(id,sal) values
+(2,200),
+(3,300),
+(4,400);
+
+select * from training.fin;
+/*LEFT JOIN*/
+
+select emp.id, emp.name, fin.sal
+from training.emp left join training.fin
+on emp.id=fin.id;
+
+
+/* using Table ALIAS*/
+select a.id, a.name, b.sal
+from training.emp a left join training.fin b
+on a.id=b.id;
+
+/* RIGHT JOIN*/
+SELECT b.id,a.name,b.sal
+from training.emp a right join training.fin b
+on a.id=b.id;
+
+/* INNER JOIN*/
+select a.id, a.name, b.sal
+from training.emp a INNER join training.fin b
+on a.id=b.id;
+
+/* OUTER JOIN*/
+select a.id, a.name, b.sal
+from training.emp a left join training.fin b
+on a.id=b.id
+UNION
+SELECT b.id,a.name,b.sal
+from training.emp a right join training.fin b
+on a.id=b.id;
+
+select a.id, a.name, b.sal
+from training.emp a left join training.fin b
+on a.id=b.id
+UNION ALL
+SELECT b.id,a.name,b.sal
+from training.emp a right join training.fin b
+on a.id=b.id;
+
+
+
+/*left join*/
+select emp.id,emp.name,fin.sal
+from training.emp left join training.fin
+on emp.id=fin.id;
+
+
+
+/*right join*/
+select b.id,a.name,b.sal
+from training.emp a right join training.fin b
+on a.id=b.id;
+
+
+/*inner join*/
+select a.id,a.name,b.sal
+from training.emp a inner join training.fin b
+on a.id=b.id;
+
+
+/*outer join*/
+select emp.id,emp.name,fin.sal
+from training.emp left join training.fin
+on emp.id=fin.id
+union all  
+select fin.id,emp.name,fin.sal
+from training.emp right join training.fin
+on fin.id=emp.id;   

@@ -1,0 +1,180 @@
+/*Data Query*/
+/* check the list of databases*/
+show databases;
+/*check table in world database*/
+use world;
+show tables;
+/* Data understanding.... */
+/* show all data from country table*/
+select * from world.country;
+
+/*show continent, countryname, population*/
+select continent, name, population from world.country;
+/* Extrcat five records only*/
+select continent, name, population from world.country
+limit 5;
+select * from world.country
+limit 5;
+/* Find total number of records in the data*/
+Select count(*) from world.country;
+select * from world.country;
+
+/*Filtering data8*/
+
+select * from world.country
+where continent='Asia';
+
+select * from world.country
+where continent='Europe';
+select * from world.country
+where continent='Europe'or 
+Continent='Asia'or continent='Africa';
+/* In Operator as a substitute of or*/
+select * from world.country
+where continent In('Asia', 'Europe','Africa');
+
+/*show all data except from Asia and africa*/
+Select * from world.country
+Where Continent not in ('Asia', 'Africa');
+
+/* And Operation*/
+
+/* Find all the data from asia having
+ independence year after 1900*/
+ Select * from world.country 
+ where continent='Asia'
+ and IndepYear>1900;
+ Select * from world.country 
+ where (continent='Asia'or Continent='europe'or Continent='Africa')
+ and IndepYear>1900; 
+ Select * from world.country 
+ where continent in ('Asia','Europe','africa')
+ and IndepYear>1900;
+ Select * from world.country 
+ where continent in ('Asia','Europe','africa')
+ and IndepYear>1900 and indepyear<1950;
+ 
+ /*Between operator as a substitute of and*/
+ Select * from world.country 
+ where (continent='Asia'or continent='africa' or continent='europe')
+ and (IndepYear between 1900 and 1950);
+ 
+ Select * from world.country 
+ where continent In ('Asia','africa','europe')
+ and (IndepYear between 1900 and 1950);
+ 
+ /*Find all the countries that got independence either
+ before 1800 or after 1900*/
+ Select * from world.country 
+ where IndepYear not between 1800 and 1900;
+  Select * from world.country
+  where indepyear<=1800 or IndepYear>1900;
+  
+  /* using null */
+  /*find all countries where inep year in Null*/
+  Select * from world.country 
+  where indepyear is null;
+  
+  /*find the count of  countries where inep year in Null*/
+  
+  Select Count(*) from world.country 
+  where indepyear is null;
+  
+  /*find all countries where inep year is available*/
+  Select * from world.country 
+  where indepyear is not null;
+ 
+ /*find the count of  countries where inep year is not Null*/
+  
+  Select Count(*) from world.country 
+  where indepyear is not null;
+  
+  /* Wildcard characters*/
+  
+  /* Find all continents starting with A*/
+  Select * from world.country
+  where continent like 'A%';
+  
+  /* Find all continents ending with A*/
+  Select * from world.country
+  where continent like '%A';
+  /* Find all countries names starting and ending with A*/
+  Select name from world.country
+  where name like 'a%a';
+
+  
+  
+  
+  /* Find the country name starting with I and has
+  4 characters in it*/
+  Select name from world.country
+  where name like 'i___';
+  Select name from world.country
+  where name like 'i___';
+  
+  select name from world.country
+  where name like 'i___';
+  
+    /* show all countries date that got independence either 
+  before 1700 or after 1900
+  and life expectancy >60 
+  and belong to either asia or americas or africa
+  and government form has federal in the name*/
+  
+  select * from world.country
+  where (IndepYear<1700 or IndepYear>1900)
+  and LifeExpectancy>60    
+  /*and continent in('asia','america','africa')*/
+  and governmentform like '%federal%';
+  
+  /*Filter data using having same clause*/
+   select * from world.country
+   Having (IndepYear<1700 or IndepYear>1900)
+  and LifeExpectancy>60 
+  /*and continent in('asia','america','africa')*/
+  and governmentform like '%federal%';
+  
+  /*sorting data*/
+  /*use ASC for ascending and DESC for Decending*/
+  /* sort data by country name*/
+  
+  Select * from world.country
+  order by name asc;
+  Select * from world.country
+  order by name Desc;
+  
+  /*sort data in ascending order of continent
+  and ascending order of life expecantacy*/
+   select * from world.country
+   Having (IndepYear<1700 or IndepYear>1900)
+  and LifeExpectancy>60 
+  /*and continent in('asia','america','africa')*/
+  and governmentform like '%federal%'
+  order by continent asc, lifeexpectancy desc;
+  
+  /*show continent, region,country name, population,
+  in ascending order of continent and decending order of population*/
+  
+  select continent, region, name,population from world.country
+  order by continent Asc,population Desc;
+  /*Sorting using colum order (as appear in query)
+  instead of column name*/
+   select continent, region, name,population from world.country
+  order by 1 Asc,4 Desc;
+  
+  
+  
+
+  
+  
+  
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+

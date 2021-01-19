@@ -1,0 +1,65 @@
+/* wildcard characters*/
+
+/*show all continents starting with A*/
+select * from world.country
+where continent like 'A%';
+
+/*show all COUNTRY NAMES starting with A*/
+
+SELECT NAME FROM WORLD.COUNTRY
+where NAME like 'A%';
+
+/*FIND ALL COUNTRY NAME STARTING AND ENDING WITH A*/
+
+SELECT NAME FROM WORLD.COUNTRY
+where NAME like 'A%A';
+
+/*FIND ALL COUNTRY NAME STARTING WITH I AND ENDING WITH A*/
+
+SELECT NAME FROM WORLD.COUNTRY
+WHERE NAME LIKE 'I%A';
+
+/*FIND ALL COUNTRY NAME  ENDING WITH A*/
+SELECT NAME FROM WORLD.COUNTRY
+WHERE NAME LIKE '%A';
+
+/*FIND 4 CHARACTER LONG NAMES STARTING WITH I*/
+SELECT NAME FROM WORLD.COUNTRY
+WHERE NAME LIKE 'I___';
+
+/*FIND 5 CHARACTER LONG NAMES STARTING WITH I AND ENDINFG WITH A*/
+SELECT NAME FROM WORLD.COUNTRY
+WHERE NAME LIKE 'I___A';
+
+/*FIND ALL THE DATA HAVING ND IN THE COUNTRY NAME*/
+SELECT * FROM WORLD.COUNTRY
+WHERE NAME LIKE '%ND%';
+
+
+/*FIND DATA FROM ASIA EUROPE AFRICA WITH COUNTRY NAME STARTING WITH A 
+And life expectancy>15
+and independance year between 1700 and 1900*/    
+
+select * from world.country
+where name like 'a%'
+and lifeexpectancy>50
+and (indepyear between 1700 and 1900)
+and continent in('asia''europe','africa');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

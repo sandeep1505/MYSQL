@@ -1,0 +1,64 @@
+/* find total population by continent*/
+select continent, sum(population)
+from world.country
+group by continent
+order by sum(population) desc;
+
+/*using colum ALIAS to rename the column
+while showing output*/
+select continent, sum(population) as 'total_population'
+from world.country
+group by continent
+order by sum(population) desc;
+
+/*from above query show population in million*/
+select continent, round(sum(population)/100000,0) as 'population_Mn'
+from world.country
+group by continent
+order by sum(population) desc;
+
+/*Use colum order for groupping instead of coulun name*/
+select continent, round(sum(population)/100000,0) as 'population_Mn'
+from world.country
+group by 1
+order by 2 desc;
+
+/*Group data at two levels*/
+/*Find continent wise, region wise total population*/
+/*using column index instead of column name/
+select continent, region, sum(population) as 'Total_population'
+from world.country
+Group by continent,region
+order by continent asc, population Desc;
+
+/*Filter data while grouping*/
+
+/*Show total population by continent excluding asia and antartica*/
+select continent, sum(population)as 'Total_population'
+from world.country
+group by continent
+having continent not in('Asia', 'antatrica');
+
+/*Show total population by continent excluding asia and antartica*/
+/*Filater using where clause*/
+select continent, sum(population)as 'Total_population'
+from world.country
+where continent not in('Asia', 'antatrica')
+group by continent;
+
+
+
+
+
+
+select continent, region, sum(population) as 'Total_population'
+from world.country
+Group by 1,2
+order by 1 asc, 3 Desc;
+
+
+/*Find continet wise total population
+by excluding countries having lifeexpectancy>70*/
+select continent,sum(population) from world.country
+where LifeExpectancy>70
+group by continent;

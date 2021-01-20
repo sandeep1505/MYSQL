@@ -1,6 +1,5 @@
 # MYSQL
 
-how to create new database.
 
 /*show the list of available databases*/
 show databases;
